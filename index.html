@@ -90,9 +90,9 @@
             alert(`活動：${result.name}\n掃描結果：${result.qrCode}`);
         }
 
-        function showScanResult(value) {
+        function showScanResult() {
             const box = document.getElementById("message-box");
-            box.textContent = `${value}`;
+            box.textContent = `收到原生彈窗確認`;
             box.style.display = "block";
 
             // 3秒後自動隱藏
