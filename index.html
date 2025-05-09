@@ -39,6 +39,10 @@
 <body>
     <ul class="activity-list" id="activityList"></ul>
 
+    <div id="message-box" style="display:none; padding:12px; margin:16px; background:#dff0d8; color:#3c763d; border-radius:6px;">
+        <!-- 顯示訊息 -->
+    </div>
+    
     <script>
         // 模擬活動數據
         const activities = [
@@ -82,6 +86,15 @@
 
         // 處理掃描結果
         function handleScanResult(jsonString) {
+            const box = document.getElementById("message-box");
+            box.textContent = `收到原生彈窗確認`;
+            box.style.display = "block";
+
+            // 3秒後自動隱藏
+            setTimeout(() => {
+                box.style.display = "none";
+            }, 3000);
+            
             const result = JSON.parse(jsonString);
             alert(`活動：${result.name}\n掃描結果：${result.qrCode}`);
         }
