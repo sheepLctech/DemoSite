@@ -70,7 +70,14 @@
                 name: activity.name,
                 content: activity.content
             };
-            window.webkit.messageHandlers.nativeApp.postMessage(message);
+            if (window.Android && Android.openQRScanner) {
+                const jsonString = JSON.stringify(message);
+                Android.openQRScanner(jsonString);
+            } else if (window.webkit && window.webkit.messageHandlers.nativeApp) {
+                window.webkit.messageHandlers.nativeApp.postMessage(message);
+            } else {
+                alert('裝置不支援掃描');
+            }
         }
 
         // 處理掃描結果
