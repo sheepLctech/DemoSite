@@ -61,9 +61,20 @@
                     <div class="activity-title">${activity.name}</div>
                     <div class="activity-content">${activity.content}</div>
                 `;
-                li.onclick = () => openQRScanner(activity);
+                li.onclick = () => openAppSwithPostRoleUI();
+                // li.onclick = () => openQRScanner(activity);
                 listElement.appendChild(li);
             });
+        }
+        
+        function openAppSwithPostRoleUI() {
+            if (window.Android) {
+                Android.openAppSwithPostRoleUI();
+            } else if (window.webkit && window.webkit.messageHandlers.jkfoneApp) {
+                window.webkit.messageHandlers.jkfoneApp.postMessage();
+            } else {
+                alert('裝置不支援掃描');
+            }
         }
 
         // 打開QR碼掃描器
