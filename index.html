@@ -70,8 +70,8 @@
         function openAppSwithPostRoleUI() {
             if (window.Android) {
                 Android.openAppSwithPostRoleUI();
-            } else if (window.webkit && window.webkit.messageHandlers.jkfoneApp) {
-                window.webkit.messageHandlers.jkfoneApp.postMessage();
+            } else if (window.webkit && window.webkit.messageHandlers.nativeApp) {
+                window.webkit.messageHandlers.nativeApp.postMessage(null);
             } else {
                 alert('裝置不支援掃描');
             }
